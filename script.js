@@ -1,17 +1,20 @@
 //your JS code here. If required.
-var str = prompt("Enter the number of elements");
+var str = prompt("Enter the number of elements")
 alert(getChar(str));
 
 function getChar(word) {
-	let idx = 0;
-	while(idx < word.length) {
-		let j = idx;
-		let cc = word.charAt(idx);
-		while(j < word.length && cc == word.charAt(j)) j++;
-
-		if(j-idx == 1) return cc;
-		idx = j;
+	let freqArr = [];
+	for (let i = 0; i < 26; i++) {
+		freqArr.push(0);
 	}
 
-	return '';
+	for (let i = 0; i < word.length; i++) {
+		freqArr[word.charCodeAt(i)-97]++;
+	}
+	console.log(freqArr);
+	for (let i = 0; i < word.length; i++) {
+		if(freqArr[word.charCodeAt(i)-97] == 1) return word.charAt(i);
+	}
+
+	return null;
 }
